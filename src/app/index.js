@@ -9,7 +9,7 @@ import { Button } from "../components/Button";
 
 
 import {useFonts, OpenSans_400Regular, OpenSans_600SemiBold} from'@expo-google-fonts/open-sans';
-import { Roboto_400Regular, Roboto_700Bold } from "@expo-google-fonts/roboto";
+import { Roboto_400Regular, Roboto_700Bold, Roboto_300Light } from "@expo-google-fonts/roboto";
 
 import rapper from "../assets/imgs/rapper.jpg";
 
@@ -17,6 +17,7 @@ export default function App() {
   const[fontsLoaded] = useFonts({
     OpenSans_400Regular,
     OpenSans_600SemiBold,
+    Roboto_300Light,
     Roboto_400Regular,
     Roboto_700Bold
   });
