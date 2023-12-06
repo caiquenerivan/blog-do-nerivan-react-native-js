@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: width,
-    backgroundColor: "#FFFFE5",
+    backgroundColor: "#F6F6ED",
     paddingHorizontal: 20,
   },
   titulo: {

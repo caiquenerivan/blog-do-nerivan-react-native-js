@@ -1,5 +1,4 @@
 import {
-  Dimensions,
   StyleSheet,
   Text,
   View,
@@ -7,30 +6,45 @@ import {
   TextInput,
 } from "react-native";
 
-const { width, height } = Dimensions.get("screen");
-
 export default function Comentarios(props) {
   return (
-    <View style={styles.sobreSection}>
-      <Image source={props.foto} style={styles.foto} />
-
-      <View>
-        <Text style={styles.autor}>{props.nome}</Text>
-        <Text style={styles.sobre}>{props.sobre}</Text>
+    <View style={styles.sobre}>
+        <Text style={styles.h2}>sobre o autor</Text>
+      <View style={styles.sobreSection}>
+        <Image source={props.foto} style={styles.foto} />
+        <View>
+          <Text style={styles.autor}>{props.nome}</Text>
+          <Text style={styles.sobreTexto}>{props.sobre}</Text>
+        </View>
+        <TextInput />
       </View>
-      <TextInput />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  h2: {
+    fontSize: 20,
+    textTransform: "lowercase",
+    color: "#5B4200",
+    fontFamily: "Roboto_700Bold",
+    paddingVertical: 10,
+  },
+  
+  sobre: {
+    marginHorizontal:20,
+    paddingVertical: 20,
+    paddingBottom: 20,
+    borderBottomColor: "#000000",
+    borderBottomWidth: 0.5,
+  },
   sobreSection: {
     flexDirection: "row",
-    maxWidth: width,
+    width:"100%",
     justifyContent: "space-between",
     paddingVertical: 20,
     marginRight: 20,
-    alignItems: "center"
+    alignItems: "center",
   },
   foto: {
     height: 120,
@@ -42,13 +56,13 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto_700Bold",
     color: "#696969",
     fontSize: 18,
-    marginHorizontal:10
+    marginHorizontal: 10,
   },
-  sobre: {
+  sobreTexto: {
     maxWidth: "80%",
     fontFamily: "Roboto_400Regular",
     color: "#696969",
     fontSize: 12,
-    marginHorizontal:10
+    marginHorizontal: 10,
   },
 });
