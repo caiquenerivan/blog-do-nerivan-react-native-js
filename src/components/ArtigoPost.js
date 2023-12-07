@@ -1,5 +1,5 @@
 import {
-    Dimensions,
+  Dimensions,
   Image,
   ImageBackground,
   Linking,
@@ -8,19 +8,42 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
+import { useState } from "react";
 
 import bboy from "../assets/imgs/bboy.jpg";
 import rapper from "../assets/imgs/rapper.jpg";
 import pac from "../assets/imgs/pac.jpg";
 import circulo from "../assets/imgs/circulo.jpg";
-import instagram from "../assets/imgs/instagram.png";
-import twitter from "../assets/imgs/twitter.png";
-import linkedin from "../assets/imgs/linkedin.png";
+import coracaoVazio from "../assets/imgs/coracao.png";
+import coracaoCheio from "../assets/imgs/coracaoCheio.png";
 
 const { width, height } = Dimensions.get("screen");
 
+export default function ArtigoPost({
+  titulo,
+  subTitulo,
+  capa,
+  autor,
+  data,
+  likes,
+}) {
+  const [qtdLikes, setQtdLikes] = useState(likes-1+1);
+  const [Liked, SetLiked] = useState(false);
+  const [desenho, SetDesenho] = useState(coracaoVazio);
 
-export default function ArtigoPost() {
+  const onLikePress = async () => {
+    setQtdLikes(qtdLikes+1);
+    SetLiked(true);
+    SetDesenho(coracaoCheio);
+  };
+
+  const onUnLikePress = async () => {
+    setQtdLikes(qtdLikes-1);
+    SetLiked(false);
+    SetDesenho(coracaoVazio);
+  };
+
   return (
     <View>
       <ImageBackground
@@ -30,41 +53,53 @@ export default function ArtigoPost() {
       >
         <View style={styles.child}>
           <Text numberOfLines={2} style={styles.titulo}>
-            50 anos de hip-hop
+            {titulo}
           </Text>
-          <Text style={styles.subTitulo}>
-            a origem do estilo mais influente da atualidade
-          </Text>
+          <Text style={styles.subTitulo}>{subTitulo}</Text>
         </View>
       </ImageBackground>
       <View style={styles.infosSection}>
         <View style={styles.infoAdicionais}>
-          <Text style={styles.data}>04 Outubro 2023</Text>
+          <Text style={styles.data}>{data}</Text>
           <Image source={circulo} style={styles.circulo} />
-          <Text style={styles.autor}>Caique Nerivan</Text>
+          <Text style={styles.autor}>{autor}</Text>
         </View>
-        <View style={styles.infoAdicionais}>
-          <TouchableOpacity
-            onPress={() => {
-              Linking.openURL("https://www.instagram.com/craquenerivan");
-            }}
-          >
-            <Image source={instagram} style={styles.iconesSociais} />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              Linking.openURL("https://twitter.com/craquenerivan");
-            }}
-          >
-            <Image source={twitter} style={styles.iconesSociais} />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              Linking.openURL("https://www.linkedin.com/in/caiquenerivan");
-            }}
-          >
-            <Image source={linkedin} style={styles.iconesSociais} />
-          </TouchableOpacity>
+        <View
+          style={[styles.separador, styles.infoAdicionais, styles.horizontal]}
+        >
+          <View style={[styles.redesSociais, styles.horizontal]}>
+            <TouchableOpacity
+              onPress={() => {
+                Linking.openURL("https://www.instagram.com/craquenerivan");
+              }}
+            >
+              <FontAwesome name="instagram" style={styles.iconesSociais} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                Linking.openURL("https://twitter.com/craquenerivan");
+              }}
+            >
+              <FontAwesome name="twitter" style={styles.iconesSociais} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                Linking.openURL("https://www.linkedin.com/in/caiquenerivan");
+              }}
+            >
+              <FontAwesome name="linkedin" style={styles.iconesSociais} />
+            </TouchableOpacity>
+          </View>
+          <View>
+            <TouchableOpacity
+              liked={Liked}
+              onPress={Liked ? onUnLikePress : onLikePress}
+              style={[styles.curtirPost, styles.horizontal]}
+            >
+              <Text>{qtdLikes}</Text>
+              <Image source={desenho} style={styles.coracao} />
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
       <View style={styles.artigo}>
@@ -141,6 +176,9 @@ export default function ArtigoPost() {
 }
 
 const styles = StyleSheet.create({
+  horizontal: {
+    flexDirection: "row",
+  },
   bgTitulo: {
     margin: 0,
     width: width,
@@ -174,6 +212,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 10,
   },
+  separador: {
+    justifyContent: "space-between",
+  },
   infosSection: {
     minHeight: 40,
     marginHorizontal: 20,
@@ -197,10 +238,10 @@ const styles = StyleSheet.create({
     width: 5,
   },
   iconesSociais: {
-    height: 20,
-    width: 20,
+    fontSize: 20,
     marginRight: 20,
     marginVertical: 6,
+    color: "#636363",
   },
   artigo: {
     marginHorizontal: 20,
@@ -228,4 +269,12 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     resizeMode: "contain",
   },
+  coracao: {
+    height: 15,
+    width: 15,
+    marginHorizontal: 10,
+  },
+  curtirPost:{
+    alignItems:"center",
+  }
 });

@@ -1,6 +1,7 @@
 import { useGlobalSearchParams } from "expo-router";
 import {
   Dimensions,
+  FlatList,
   StyleSheet,
   Text,
   View,
@@ -12,21 +13,26 @@ import caique from "../../assets/imgs/caique.jpg";
 import Comentarios from "../../components/Comentario";
 import About from "../../components/About";
 import ArtigoPost from "../../components/ArtigoPost";
+import { posts } from "../../data/postList";
+
+
 
 const { width, height } = Dimensions.get("screen");
 
 export default function Post() {
-  const { id } = useGlobalSearchParams();
+  const { id, titulo, subTitulo, capa, autor, data, likes, categoria, comentario, texto } = useGlobalSearchParams();
+
+  const qtdLikes = likes;
 
   return (
     <ScrollView style={styles.container}>
-      <ArtigoPost />
+      <ArtigoPost titulo={titulo} subTitulo={subTitulo} capa={capa} autor={autor} data={data} likes={likes}/>
       <View style={styles.outrosPosts}>
-        <Text style={styles.h2}>posts semelhantes</Text>
+        <Text style={styles.h2}>posts recentes</Text>
       </View>
 
       <Comentarios
-        nome="Caique Nerivan"
+        nome="{comentario.nome}"
         comentario="It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
           with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
         likes={8000}
