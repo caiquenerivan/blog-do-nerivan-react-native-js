@@ -2,6 +2,7 @@ import { Link } from "expo-router";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 
 export default function ListaPosts({ ...item }) {
+
   return (
     <View>
       <Link
@@ -17,10 +18,6 @@ export default function ListaPosts({ ...item }) {
             data: item.data,
             likes: item.likes,
             autor: item.autor,
-            textoComentario: item.comentario.texto,
-            likesComentario: item.comentario.likes,
-            comentario: item.comentario.texto,
-
           },
         }}
         asChild

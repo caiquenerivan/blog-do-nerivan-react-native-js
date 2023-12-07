@@ -22,20 +22,17 @@ export default function Comentarios(props) {
   };
 
   return (
-    <View style={styles.comentarios}>
-      <Text style={styles.h2}>comentarios</Text>
-      <View>
-        <Text style={styles.autorComentario}>{props.nome}</Text>
-        <Text style={styles.textoComentario}>{props.comentario}</Text>
-        <View style={styles.likes}>
-          <Text style={styles.likesComentarios}>{qtdLikes}</Text>
-          <TouchableOpacity
-            liked={Liked}
-            onPress={Liked ? onUnLikePress : onLikePress}
-          >
-            <Image source={desenho} style={styles.coracao} />
-          </TouchableOpacity>
-        </View>
+    <View>
+      <Text style={styles.autorComentario}>{props.nome}</Text>
+      <Text style={styles.textoComentario}>{props.comentario}</Text>
+      <View style={styles.likes}>
+        <Text style={styles.likesComentarios}>{qtdLikes}</Text>
+        <TouchableOpacity
+          liked={Liked}
+          onPress={Liked ? onUnLikePress : onLikePress}
+        >
+          <Image source={desenho} style={styles.coracao} />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -49,13 +46,8 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto_700Bold",
     paddingVertical: 10,
   },
-  
-  comentarios: {
-    marginHorizontal: 20,
-    paddingVertical: 20,
-    borderBottomColor: "#000000",
-    borderBottomWidth: 0.5,
-  },
+
+
   autorComentario: {
     fontFamily: "Roboto_700Bold",
     textTransform: "uppercase",
