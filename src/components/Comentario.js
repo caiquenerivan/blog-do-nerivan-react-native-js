@@ -22,7 +22,7 @@ export default function Comentarios(props) {
   };
 
   return (
-    <View>
+    <View style={styles.borda}>
       <Text style={styles.autorComentario}>{props.nome}</Text>
       <Text style={styles.textoComentario}>{props.comentario}</Text>
       <View style={styles.likes}>
@@ -47,7 +47,10 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
 
-
+  borda:{
+    borderBottomWidth: .5,
+    borderBottomColor: "#696969"
+  },
   autorComentario: {
     fontFamily: "Roboto_700Bold",
     textTransform: "uppercase",

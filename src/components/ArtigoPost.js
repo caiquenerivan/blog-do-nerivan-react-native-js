@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
   infosSection: {
     minHeight: 40,
     marginHorizontal: 20,
-    borderBottomColor: "#000000",
+    borderBottomColor: "#696969",
     borderBottomWidth: 0.5,
   },
   data: {
@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
   artigo: {
     marginHorizontal: 20,
     paddingVertical: 20,
-    borderBottomColor: "#000000",
+    borderBottomColor: "#696969",
     borderBottomWidth: 0.5,
   },
   h2: {

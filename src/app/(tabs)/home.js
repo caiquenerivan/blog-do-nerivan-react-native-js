@@ -3,9 +3,6 @@ import {
   Text,
   StyleSheet,
   SafeAreaView,
-  Image,
-  View,
-  Pressable,
   Dimensions,
   FlatList,
 } from "react-native";
@@ -48,7 +45,7 @@ const styles = StyleSheet.create({
     color: "#636363",
     textTransform: "uppercase",
     marginVertical: 10,
-    borderBottomColor: "#000000",
+    borderBottomColor: "#69696969",
     borderBottomWidth: 0.5,
   },
   negrito: {

@@ -30,8 +30,6 @@ export default function Post() {
     item,
   } = useGlobalSearchParams();
 
-  console.log("ID recebido:", id);
-
   const postId = parseInt(id, 10);
   const post = posts.find((post) => post.id === postId);
 
@@ -114,8 +112,6 @@ const styles = StyleSheet.create({
   comentarios: {
     marginHorizontal: 20,
     paddingVertical: 20,
-    borderBottomColor: "#000000",
-    borderBottomWidth: 0.5,
   },
 
   h2: {
@@ -129,7 +125,5 @@ const styles = StyleSheet.create({
   outrosPosts: {
     marginHorizontal: 20,
     paddingVertical: 20,
-    borderBottomColor: "#000000",
-    borderBottomWidth: 0.5,
   },
 });
